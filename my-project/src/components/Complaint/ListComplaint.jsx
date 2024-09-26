@@ -50,7 +50,7 @@ const ListComplaint = () => {
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.get(
-        "https://capstone-dev.mdrizki.my.id/api/v1/complaints",
+        "https://keluh-dev.mdrizki.my.id/api/v1/complaints",
         {
           headers: {
             "Content-Type": "application/json",

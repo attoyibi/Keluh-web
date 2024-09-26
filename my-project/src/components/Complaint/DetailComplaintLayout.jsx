@@ -26,7 +26,7 @@ const DetailComplaintLayout = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [textInput, setTextInput] = useState("");
   const [refreshProcess, setRefreshProcess] = useState(false);
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
 
   useEffect(() => {
     fetchComplaintDetails();
@@ -37,7 +37,7 @@ const DetailComplaintLayout = () => {
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.get(
-        `https://capstone-dev.mdrizki.my.id/api/v1/complaints/${id}`,
+        `https://keluh-dev.mdrizki.my.id/api/v1/complaints/${id}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const DetailComplaintLayout = () => {
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.get(
-        `https://capstone-dev.mdrizki.my.id/api/v1/complaints/${id}/discussions`,
+        `https://keluh-dev.mdrizki.my.id/api/v1/complaints/${id}/discussions`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -113,7 +113,7 @@ const DetailComplaintLayout = () => {
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.post(
-        `https://capstone-dev.mdrizki.my.id/api/v1/complaints/${id}/processes`,
+        `https://keluh-dev.mdrizki.my.id/api/v1/complaints/${id}/processes`,
         {
           status: selectedOption,
           message: textInput,
@@ -152,51 +152,54 @@ const DetailComplaintLayout = () => {
   //! Hapus complaint
   const handleDeleteComplaint = async (complaintId) => {
     try {
-      const token = sessionStorage.getItem('token');
+      const token = sessionStorage.getItem("token");
       const confirmed = await confirmDelete();
 
       if (!confirmed) return;
 
-      const response = await axios.delete(`https://capstone-dev.mdrizki.my.id/api/v1/complaints/${complaintId}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const response = await axios.delete(
+        `https://keluh-dev.mdrizki.my.id/api/v1/complaints/${complaintId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
       if (response.status === 200) {
         Swal.fire({
-          title: 'Deleted!',
-          text: 'Your complaint has been deleted.',
-          icon: 'success',
-          confirmButtonColor: '#DC2626',
+          title: "Deleted!",
+          text: "Your complaint has been deleted.",
+          icon: "success",
+          confirmButtonColor: "#DC2626",
         });
         setComplaint(null);
       } else {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      Navigate('/complaint');
+      Navigate("/complaint");
     } catch (error) {
-      console.error('Error deleting complaint:', error);
+      console.error("Error deleting complaint:", error);
       Swal.fire({
-        title: 'Error!',
-        text: 'Failed to delete complaint.',
-        icon: 'error',
-        confirmButtonColor: '#2563EB',
+        title: "Error!",
+        text: "Failed to delete complaint.",
+        icon: "error",
+        confirmButtonColor: "#2563EB",
       });
     }
   };
 
   const confirmDelete = async () => {
     const result = await Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
-      confirmButtonColor: '#DC2626',
-      cancelButtonColor: '#2563EB',
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      confirmButtonColor: "#DC2626",
+      cancelButtonColor: "#2563EB",
       reverseButtons: true,
     });
 
@@ -267,7 +270,10 @@ const DetailComplaintLayout = () => {
                     </select>
                   </div>
                   <div className="mb-4">
-                    <label htmlFor="description" className="block mb-1 font-bold">
+                    <label
+                      htmlFor="description"
+                      className="block mb-1 font-bold"
+                    >
                       Deskripsi
                     </label>
                     <input

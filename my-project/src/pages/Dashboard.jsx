@@ -35,7 +35,7 @@ const Dashboard = () => {
 
       const token = sessionStorage.getItem("token");
       const response = await axios.get(
-        "https://capstone-dev.mdrizki.my.id/api/v1/admins/dashboard",
+        "https://keluh-dev.mdrizki.my.id/api/v1/admins/dashboard",
         {
           headers: {
             "Content-Type": "application/json",
@@ -44,7 +44,8 @@ const Dashboard = () => {
         }
       );
 
-      const { complaintsByStatus, usersByYearAndMonth, latestComplaints } = response.data.data;
+      const { complaintsByStatus, usersByYearAndMonth, latestComplaints } =
+        response.data.data;
 
       setProgressData(complaintsByStatus);
       setUserChartData(usersByYearAndMonth);

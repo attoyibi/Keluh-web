@@ -17,7 +17,7 @@ const NewsPage = () => {
     try {
       const token = sessionStorage.getItem("token");
       const response = await fetch(
-        "https://capstone-dev.mdrizki.my.id/api/v1/news",
+        "https://keluh-dev.mdrizki.my.id/api/v1/news",
         {
           method: "GET",
           headers: {

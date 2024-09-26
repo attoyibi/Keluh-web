@@ -1,10 +1,10 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import HeaderLayout from '../Header/HeaderLayout';
-import SidebarLayout from '../Header/SidebarLayout';
-import { useDropzone } from 'react-dropzone';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import HeaderLayout from "../Header/HeaderLayout";
+import SidebarLayout from "../Header/SidebarLayout";
+import { useDropzone } from "react-dropzone";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddNewsLayout = () => {
   const [category, setCategory] = useState([]);
@@ -19,7 +19,7 @@ const AddNewsLayout = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://capstone-dev.mdrizki.my.id/api/v1/categories",
+          "https://keluh-dev.mdrizki.my.id/api/v1/categories",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -55,7 +55,7 @@ const AddNewsLayout = () => {
 
     try {
       await axios.post(
-        "https://capstone-dev.mdrizki.my.id/api/v1/news",
+        "https://keluh-dev.mdrizki.my.id/api/v1/news",
         formData,
         {
           headers: {
@@ -239,4 +239,3 @@ const AddNewsLayout = () => {
 };
 
 export default AddNewsLayout;
-

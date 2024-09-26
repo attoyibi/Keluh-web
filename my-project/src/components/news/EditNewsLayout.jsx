@@ -21,7 +21,7 @@ const EditNewsLayout = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://capstone-dev.mdrizki.my.id/api/v1/categories",
+          "https://keluh-dev.mdrizki.my.id/api/v1/categories",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ const EditNewsLayout = () => {
     const fetchNews = async () => {
       try {
         const response = await axios.get(
-          `https://capstone-dev.mdrizki.my.id/api/v1/news/${id}`,
+          `https://keluh-dev.mdrizki.my.id/api/v1/news/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -78,7 +78,7 @@ const EditNewsLayout = () => {
 
     try {
       await axios.put(
-        `https://capstone-dev.mdrizki.my.id/api/v1/news/${id}`,
+        `https://keluh-dev.mdrizki.my.id/api/v1/news/${id}`,
         formData,
         {
           headers: {

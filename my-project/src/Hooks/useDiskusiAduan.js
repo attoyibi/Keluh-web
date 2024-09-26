@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import axios from "axios"; 
+import axios from "axios";
 
 const MySwal = withReactContent(Swal);
 
@@ -25,25 +25,23 @@ const useDiskusiAduan = (complaint, discussions) => {
       confirmButtonText: "Ya, hapus!",
       cancelButtonText: "Batal",
     }).then(async (result) => {
-
       if (result.isConfirmed) {
-
         try {
-          const token = sessionStorage.getItem("token"); 
+          const token = sessionStorage.getItem("token");
           await axios.delete(
-            `https://capstone-dev.mdrizki.my.id/api/v1/complaints/${complaint.id}/discussions/${id}`, 
+            `https://keluh-dev.mdrizki.my.id/api/v1/complaints/${complaint.id}/discussions/${id}`,
             {
               headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`, 
+                Authorization: `Bearer ${token}`,
               },
             }
           );
           const updatedDiscussions = discussions.filter(
             (discussion) => discussion.id !== id
           );
-          setNewDiscussion(null); 
-          setTextInput(""); 
+          setNewDiscussion(null);
+          setTextInput("");
           MySwal.fire("Terhapus!", "Diskusi telah dihapus.", "success");
         } catch (error) {
           console.error("Error deleting discussion:", error);
@@ -54,50 +52,49 @@ const useDiskusiAduan = (complaint, discussions) => {
   };
 
   const fetchRecommendation = async () => {
-    setIsFetchingRecommendation(true); 
+    setIsFetchingRecommendation(true);
     try {
-      const token = sessionStorage.getItem("token"); 
+      const token = sessionStorage.getItem("token");
       const response = await axios.get(
-        `https://capstone-dev.mdrizki.my.id/api/v1/complaints/${complaint.id}/discussions/get-recommendation`,
+        `https://keluh-dev.mdrizki.my.id/api/v1/complaints/${complaint.id}/discussions/get-recommendation`,
         {
           headers: {
             // Mengatur header untuk request
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       setRecommendation(response.data.data.answer);
-      setTextInput(response.data.data.answer); 
+      setTextInput(response.data.data.answer);
       setIsFetchingRecommendation(false);
     } catch (error) {
-
       console.error("Error fetching recommendation:", error);
-      setIsFetchingRecommendation(false); 
+      setIsFetchingRecommendation(false);
     }
   };
 
   const postDiscussion = async () => {
     if (isSubmitting) return;
-    setIsSubmitting(true); 
+    setIsSubmitting(true);
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.post(
-        `https://capstone-dev.mdrizki.my.id/api/v1/complaints/${complaint.id}/discussions`,
+        `https://keluh-dev.mdrizki.my.id/api/v1/complaints/${complaint.id}/discussions`,
         {
-          comment: textInput, 
+          comment: textInput,
         },
         {
           headers: {
             // Mengatur header untuk request
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      setNewDiscussion(response.data.data); 
-      setTextInput(""); 
-      setIsSubmitting(false); 
+      setNewDiscussion(response.data.data);
+      setTextInput("");
+      setIsSubmitting(false);
     } catch (error) {
       console.error("Error posting discussion:", error);
       setIsSubmitting(false);
@@ -111,7 +108,7 @@ const useDiskusiAduan = (complaint, discussions) => {
   }, [newDiscussion]);
 
   useEffect(() => {
-    setError(null); 
+    setError(null);
     if (discussions.length === 0) {
       setError("Tidak ada diskusi ditemukan.");
     }

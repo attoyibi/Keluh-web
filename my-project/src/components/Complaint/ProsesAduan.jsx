@@ -12,7 +12,7 @@ const ProsesAduan = ({ complaintId, refreshProcess }) => {
       try {
         const token = sessionStorage.getItem("token");
         const response = await axios.get(
-          `https://capstone-dev.mdrizki.my.id/api/v1/complaints/${complaintId}/processes`,
+          `https://keluh-dev.mdrizki.my.id/api/v1/complaints/${complaintId}/processes`,
           {
             headers: {
               "Content-Type": "application/json",

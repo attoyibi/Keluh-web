@@ -5,7 +5,7 @@ const token = sessionStorage.getItem("token");
 export const getNews = async () => {
   try {
     const response = await axios.get(
-      "https://capstone-dev.mdrizki.my.id/api/v1/news",
+      "https://keluh-dev.mdrizki.my.id/api/v1/news",
       {
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export const getNews = async () => {
 export const getNewsDetail = async (newsId) => {
   try {
     const response = await axios.get(
-      `https://capstone-dev.mdrizki.my.id/api/v1/news/${newsId}`,
+      `https://keluh-dev.mdrizki.my.id/api/v1/news/${newsId}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export const getNewsDetail = async (newsId) => {
 export const deleteNews = async (newsId) => {
   try {
     const response = await axios.delete(
-      `https://capstone-dev.mdrizki.my.id/api/v1/news/${newsId}`,
+      `https://keluh-dev.mdrizki.my.id/api/v1/news/${newsId}`,
       {
         headers: {
           "Content-Type": "application/json",
